@@ -3,15 +3,18 @@
 
 $bg_color: #a3d0c3;
 $main_color: #7ba7ab;
+$content_color: #fff;
+
+%fa-icon {
+    right: 20px;
+    left: auto;
+    font-size: 16px;
+}
 
 * {
     margin: 0;
     padding: 0;
-    @include box-sizing(border-box);
-    &:before {
-        @include box-sizing(border-box);
-    }
-    &:after {
+    &, &:before, &:after {
         @include box-sizing(border-box);
     }
 }
@@ -26,7 +29,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: $content_color;
     border-top: 1px solid #ddd;
 }
 
@@ -51,7 +54,7 @@ body {
 
 .hack {
     height: 15px;
-    background: #fff;
+    background: $content_color;
 }
 
 .content {
@@ -64,8 +67,8 @@ body {
     min-height: 150px;
     max-width: 100%;
     padding: 6% 7% 0 7%;
-    background: #fff;
-    list-style: none;
+    @include background($content_color);
+    @include list-style(none);
     @include border-radius(4px);
     .link {
         cursor: pointer;
@@ -85,9 +88,7 @@ body {
             color: #595959;
             @include transition(all 0.4s ease);
             &.fa-chevron-down {
-                right: 20px;
-                left: auto;
-                font-size: 16px;
+                @extend %fa-icon;
             }
         }
         .select {
@@ -106,21 +107,19 @@ body {
 
 .submenu {
     display: none;
-    background: #fff;
+    @include background($content_color);
     font-size: 14px;
     li {
+        position: relative;
         border: 1px solid $main_color;
         border-top: none;
-        list-style: none;
-        position: relative;
+        @include list-style(none);
         &:last-child {
             @include border-bottom-left-radius(1em);
             @include border-bottom-right-radius(1em);
         }
         i.fa-chevron-right {
-            right: 20px;
-            left: auto;
-            font-size: 16px;
+            @extend %fa-icon;
         }
     }
     a {
@@ -152,8 +151,8 @@ body {
             height: 42px;
             width: 42px;
             cursor: pointer;
-            @include stretch(0, 0, false, false);
             background: $main_color;
+            @include stretch(0, 0, false, false);
             @include border-radius(0 5px 5px 0);
             &:before {
                 content: "\f002";
