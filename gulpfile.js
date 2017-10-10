@@ -34,7 +34,7 @@ gulp.task('html', () =>
 gulp.task('default', ['compass', 'min-css', 'min-js', 'html']);
 
 gulp.task('watch', () =>
-    gulp.watch('./dist/**/*', ['default'])
+    gulp.watch(['./dist/*', './dist/**/*'], ['default'])
 );
 
 gulp.task('clean', () =>
