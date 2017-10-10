@@ -1,0 +1,166 @@
+@import "compass";
+@import "compass/layout";
+
+$bg_color: #a3d0c3;
+$main_color: #7ba7ab;
+
+* {
+    margin: 0;
+    padding: 0;
+    @include box-sizing(border-box);
+    &:before {
+        @include box-sizing(border-box);
+    }
+    &:after {
+        @include box-sizing(border-box);
+    }
+}
+
+body {
+    font-family: "Microsoft YaHei";
+    background-color: $bg_color;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.item {
+    @include inline-block;
+    text-align: center;
+    width: 49%;
+    margin: 9px auto;
+    cursor: pointer;
+    i {
+        width: 20px;
+        height: 20px;
+        color: $main_color;
+    }
+    span {
+        display: block;
+        font-size: 10px;
+        line-height: 10px;
+        margin-top: 5px;
+    }
+}
+
+.hack {
+    height: 15px;
+    background: #fff;
+}
+
+.content {
+    margin: 1% 2% 0 2%;
+    padding-bottom: 100px;
+}
+
+.accordion {
+    width: 100%;
+    min-height: 150px;
+    max-width: 100%;
+    padding: 6% 7% 0 7%;
+    background: #fff;
+    list-style: none;
+    @include border-radius(4px);
+    .link {
+        cursor: pointer;
+        display: block;
+        padding: 10px 0px 10px 15px;
+        font-size: 12px;
+        border: 1px solid $main_color;
+        position: relative;
+        @include transition(all 0.4s ease);
+        @include border-top-left-radius(1em);
+        @include border-top-right-radius(1em);
+    }
+    li {
+        i {
+            @include stretch(13px, false, false, 15px);
+            font-size: 18px;
+            color: #595959;
+            @include transition(all 0.4s ease);
+            &.fa-chevron-down {
+                right: 20px;
+                left: auto;
+                font-size: 16px;
+            }
+        }
+        .select {
+            font-size: 16px;
+        }
+        &.open {
+            .link {
+                background-color: #efefef;
+            }
+            i.fa-chevron-down {
+                @include rotate(180deg);
+            }
+        }
+    }
+}
+
+.submenu {
+    display: none;
+    background: #fff;
+    font-size: 14px;
+    li {
+        border: 1px solid $main_color;
+        border-top: none;
+        list-style: none;
+        position: relative;
+        &:last-child {
+            @include border-bottom-left-radius(1em);
+            @include border-bottom-right-radius(1em);
+        }
+        i.fa-chevron-right {
+            right: 20px;
+            left: auto;
+            font-size: 16px;
+        }
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        color: #010101;
+        padding: 12px;
+        @include transition(all 0.25s ease);
+    }
+}
+
+.bar1 {
+    padding: 30px 0;
+    form {
+    	position: relative;
+    	width: 300px;
+    	margin: 0 auto;
+        input {
+            outline: none;
+            width: 100%;
+            height: 42px;
+            padding-left: 13px;
+            border: 2px solid $main_color;
+            @include border-radius(5px);
+        }
+        button {
+            border: none;
+            outline: none;
+            height: 42px;
+            width: 42px;
+            cursor: pointer;
+            @include stretch(0, 0, false, false);
+            background: $main_color;
+            @include border-radius(0 5px 5px 0);
+            &:before {
+                content: "\f002";
+                font-family: FontAwesome;
+                font-size: 16px;
+                color: #f9f0da;
+            }
+        }
+    }
+}
